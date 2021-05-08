@@ -25,7 +25,7 @@
 <main class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
 	<Router {routes} />
 </main>
-<footer class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8 text-center">
+<footer class="w-full py-6 border-t-2 border-gray-100 text-center">
 	<p>Made with 💜 by Hayden Mankin</p>
 	<p>Powered by Svelte, Tailwind, and the Mangadex API</p>
 </footer>

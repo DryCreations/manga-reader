@@ -39,10 +39,20 @@ export function getManga(title) {
     })
 }
 
-export function getMangaChapters() {
+export function getMangaChapters(id, page, perPage) {
     let params = {
-        
+        limit: perPage,
+        offset: perPage * page,
+        manga: id
     }
+
+    return instance.get(`/chapter`, {
+        params
+    }).then(response => {
+        console.log(response);
+
+        return response;
+    })
 }
 
 export function getChapterImages(id) {

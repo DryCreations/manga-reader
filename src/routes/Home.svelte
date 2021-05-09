@@ -5,13 +5,14 @@
 
     let mangaList = getRecentlyUpdated()
 
+    console.log(mangaList);
 
 </script>
 
 {#await mangaList}
     <p>loading...</p>
 {:then list}
-    {#each list.data.results as {data: {attributes}, id}}
+    {#each list.data.results as {data: {attributes, id}}}
         <Card attributes={attributes} id={id} />
     {/each}
 {:catch error}

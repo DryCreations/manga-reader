@@ -9,9 +9,6 @@
     let mangaPromise = getMangaChapters(params.manga_id, 0, 100)
 </script>
 
-<h1>Chapter</h1>
-
-
 {#await mangaPromise}
     <p>loading...</p>
 {:then chapters}   

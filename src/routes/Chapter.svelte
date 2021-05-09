@@ -7,9 +7,6 @@
 
 </script>
 
-<h1>Chapter</h1>
-
-
 {#await imagePromise}
     <p>loading...</p>
 {:then images}   

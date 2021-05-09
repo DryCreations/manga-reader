@@ -1,8 +1,6 @@
 import axios from 'axios'
 import qs from 'qs'
 
-
-
 const baseURL = 'https://api.mangadex.org/'
 
 const instance = axios.create({

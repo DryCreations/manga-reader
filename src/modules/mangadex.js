@@ -30,7 +30,7 @@ export function getManga(title) {
         params
     })
     .then(response => {
-        console.log(response)
+        // console.log(response)
 
         return response
     })
@@ -40,11 +40,48 @@ export function getManga(title) {
 }
 
 export function getMangaChapters() {
-
+    let params = {
+        
+    }
 }
 
-export function getChapterImages() {
+export function getChapterImages(id) {
+    let params = {
 
+    }
+
+    let chapterInfo = instance.get(`/chapter/${id}`, {
+        params
+    }).then(response => {
+
+        // console.log(response);
+
+        return response;
+    })
+
+    let atHome = instance.get(`/at-home/server/${id}`, {
+        params
+    }).then(response => {
+
+        // console.log(response);
+
+        return response;
+    })
+
+    return Promise.all([chapterInfo, atHome]).then(data => {
+        // console.log(data[0])
+        // console.log(data[1])
+
+        let baseUrl = data[1].data.baseUrl;
+        let hash = data[0].data.data.attributes.hash;
+        let mode = 'data'
+
+        let images = data[0].data.data.attributes.data.map(img => `${baseUrl}/${mode}/${hash}/${img}`)
+
+        // console.log(images)
+
+        return images
+    })
 }
 
 export function getRecentlyUpdated() {
@@ -61,14 +98,11 @@ export function getRecentlyUpdated() {
         params
     })
     .then(response => {
-        console.log(response)
+        // console.log(response)
 
-        console.log(JSON.stringify(response.data))
+        // console.log(JSON.stringify(response.data))
 
         return response
-    })
-    .catch(error => {
-        console.log(error)
     })
 }
 

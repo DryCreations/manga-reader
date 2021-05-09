@@ -2,7 +2,6 @@
     import {getRecentlyUpdated} from '../modules/mangadex.js'
 
     import Card from '../components/Card.svelte'
-import { attr } from 'svelte/internal';
 
     let mangaList = getRecentlyUpdated()
 

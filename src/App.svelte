@@ -12,9 +12,9 @@
 
 	const routes = {
 		'/': Home,
-		'/manga/': Manga,
+		'/manga/:manga_id': Manga,
 		'/author/': Author,
-		'/chapter/': Chapter,
+		'/chapter/:chapter_id': Chapter,
 		'/about/': About,
 		'*': NotFound
 	}

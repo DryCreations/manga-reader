@@ -17,14 +17,13 @@ instance.interceptors.request.use(config => {
     return config;
   });
 
-export function getManga(title) {
+export function getManga(id) {
 
     let params = {
-        contentRating: ['safe', 'suggestive'],
-        title: title,
+
     }
 
-    return instance.get('/manga/', {
+    return instance.get(`/manga/${id}`, {
         params
     })
     .then(response => {
@@ -95,14 +94,14 @@ export function getChapterImages(id) {
 export function getRecentlyUpdated() {
     let params = {
         order: {
-            updatedAt: 'asc',
-            createdAt: 'asc',
+            updatedAt: 'desc',
+            createdAt: 'desc',
         },
         limit: 100,
         offset: 0,
     }
 
-    return instance.get('/manga/', {
+    return instance.get('/manga', {
         params
     })
     .then(response => {

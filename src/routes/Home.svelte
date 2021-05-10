@@ -1,21 +1,7 @@
 <script>
-    import {getRecentlyUpdated} from '../modules/mangadex.js'
-
-    import Card from '../components/Card.svelte'
-
-    let mangaList = getRecentlyUpdated()
-
-    console.log(mangaList);
+    import {push, pop, replace} from 'svelte-spa-router'
+    replace('/manga')
 
 </script>
 
-{#await mangaList}
-    <p>loading...</p>
-{:then list}
-    {#each list.data.results as {data: {attributes, id}}}
-        <Card attributes={attributes} id={id} />
-    {/each}
-{:catch error}
-    <p>something went wrong</p>
-    <p>{error.message}</p>
-{/await}
+<h1>Home</h1>

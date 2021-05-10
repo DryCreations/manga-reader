@@ -1,23 +1,24 @@
 <script>
 	import Router from 'svelte-spa-router'
 
-	import Home from './routes/Home.svelte'
-	import Author from './routes/Author.svelte'
-	import Chapter from './routes/Chapter.svelte'
-	import Manga from './routes/Manga.svelte'
-	import About from './routes/About.svelte'
-	import NotFound from './routes/NotFound.svelte'
+	import Home from '/routes/Home.svelte'
+	import Author from '/routes/Author.svelte'
+	import Group from '/routes/Group.svelte'
+	import Manga from '/routes/Manga.svelte'
+	import About from '/routes/About.svelte'
+	import NotFound from '/routes/NotFound.svelte'
 
-	import Header from './components/Header.svelte'
+	import Header from '/components/Header.svelte'
 
-	const routes = {
-		'/': Home,
-		'/manga/:manga_id': Manga,
-		'/author/': Author,
-		'/chapter/:chapter_id': Chapter,
-		'/about/': About,
-		'*': NotFound
-	}
+	const routes = new Map()
+
+	routes.set('/', Home)
+	routes.set(/^\/manga\/?.*/, Manga)
+	routes.set(/^\/author\/?.*/, Author)
+	routes.set(/^\/group\/?.*/, Group)
+	routes.set(/^\/about\/?/, About)
+	routes.set('*', NotFound)
+
 </script>
 
 

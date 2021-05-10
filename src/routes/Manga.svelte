@@ -1,23 +1,17 @@
 <script>
-    import {getMangaChapters} from '../modules/mangadex.js'
+    import Router from 'svelte-spa-router'
 
-    import {link} from 'svelte-spa-router'
+    import List from './manga/List.svelte'
+    import Display from './manga/Display.svelte'
 
+    const routes = new Map()
 
-    export let params;
+    routes.set(/^\/manga\/(.+?)(?:\/?|\/.*)$/, Display)
+    routes.set(/^\/manga\/?$/, List)
 
-    let mangaPromise = getMangaChapters(params.manga_id, 0, 100)
+    export let params = [];
+    $: [ location ] = params
+
 </script>
 
-{#await mangaPromise}
-    <p>loading...</p>
-{:then chapters}   
-    {#each chapters.data.results as {data: {attributes: ch, id}},i}
-        <p class="my-8">
-            <a href={`/chapter/${id}`} use:link>{ch.title}</a>
-        </p>
-    {/each}
-{:catch error}
-    <p>something went wrong</p>
-    <p>{error.message}</p>
-{/await}
+<Router {routes} />
